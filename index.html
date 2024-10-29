@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 60px;
+            height: 100%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            box-shadow: 5px 0 10px rgba(0, 0, 0, 0.3); /* Shadow on the right */
+        }
+
+        .sidebar .icon {
+            width: 40px;
+            height: 40px;
+            margin: 20px 0;
+            background-color: #ffff;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+        }
+
+        .sidebar .icon:hover {
+            border-radius: 5px;
+            width: 44px;
+            height: 44px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: none;
+            max-height: 100%;
+        }
+        .main-content {
+        background-color: #ffffff;
+        padding: 30px;
+        margin-bottom: 5vh;
+        margin-left: 2vh;
+        margin-right: 2vh;
+        margin-top: 2vh;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 32px;
+        color: #2c3e50;
+        text-align: center;
+        border-bottom: 2px solid #2980b9;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #2980b9;
+        margin-top: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #34495e;
+    }
+
+    ul.custom-list {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+
+    ul.custom-list li {
+        list-style-type: none;
+        padding: 10px 0;
+        border-bottom: 1px solid #eaeaea;
+        margin-bottom: 10px;
+    }
+
+    ul.custom-list li span {
+        font-weight: bold;
+        color: #e74c3c;
+    }
+
+    ul.custom-list li:last-child {
+        border-bottom: none;
+    }
+
+    .event-section, .belief-section, .sentiment-section {
+        margin-top: 30px;
+    }
+
+    /* Hover effect for list items */
+    ul.custom-list li:hover {
+        background-color: #ecf0f1;
+        transition: background-color 0.3s ease;
+    }
+        .main-content.active {
+            display: block;
+        }   
+
+        /* Icon placeholders */
+        .icon img {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .main-content h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid #777;
+    padding-bottom: 5px;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.main-content strong {
+    font-weight: bold;
+    color: #222;
+}
+
+.main-content em {
+    font-style: italic;
+    color: #444;
+}
+
+.main-content blockquote {
+    margin: 15px 0;
+    padding-left: 15px;
+    border-left: 4px solid #888;
+    font-style: italic;
+    color: #666;
+}
+
+.main-content blockquote p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+
+.main-content.active {
+    display: block;
+}
+
+.main-content h1, .main-content p {
+    transition: all 0.3s ease;
+}
+
+.main-content p:hover {
+    color: #000;
+}
+@keyframes intro {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for the outro (fade out and scale down) */
+@keyframes outro {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+.intro-animation {
+    animation: intro 0.5s forwards; /* Forward makes sure it ends at the last keyframe */
+}
+
+/* Apply the outro animation */
+.outro-animation {
+    animation: outro 0.5s forwards;
+}
+.watermark-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    z-index: 1000;
+}
+
+
+
+.watermark-image {
+    margin-left: 1vw;
+    width: 4.5vw;
+    height: auto;
+    cursor: pointer; /* Change cursor to indicate hover */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect to change the .water-mark */
+.watermark-image:hover {
+    transform: scale(1.15);
+}
+
+
+.source {
+    margin-bottom: 20px; /* Adds space between each source */
+    padding: 10px; /* Adds padding to each source block */
+    border-left: 4px solid #0056b3; /* Adds a colored left border */
+}
+
+.source p {
+    margin: 0; /* Resets the margin for paragraph */
+}
+
+.source a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.source a:hover {
+    text-decoration: underline; /* Underline links on hover for emphasis */
+}
+.img-cont{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    
+}
+
+.large-img{
+    width: 100%;
+    height: 80vh;
+    width: 30vw; /* ie8 */
+    object-fit: cover;
+    transform: scale(auto);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.dropdown-container {
+            height: 100%;
+            justify-content: left;
+            display: flex;
+            flex-direction: column;
+            align-items: top;
+            gap: 1.5vh;
+        }
+
+        .dropdown {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: .5vh;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            transition: all 0.3s ease; /* Ensure the bubble transitions smoothly */
+        }   
+
+.dropdown-content {
+    padding: .25vw .375vh;
+
+}
+
+
+        .dropdown button {
+            display: flex;
+            width: 50vw;
+            height: 5vh;
+            padding: 10px;
+            background-color: #ffff;
+            color: black;
+            border: 1px gray;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size:1.75vh;
+            justify-content: left; /* Horizontally center the content */
+            text-align: left;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .dropdown button:hover{
+            transform: translateX(1vw);
+            
+        }
+       
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 1.5vh;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease; /* Ensure the bubble transitions smoothly */
+
+        }
+        .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+        .dropdown-content p {
+            padding: 1.5vh;
+            color: #333;
+            font-size: 1.5vh;
+        }
+        .dropdown-content ul {
+            padding:1.6vh;
+        }
+        .dropdown-content li {
+            color: #333;
+            font-size: 1.6vh;
+        }
+        .page1-wrapper{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Arrow pointing from dropdown to box */
+        
+        .dropdown-content.fade-out {
+            display: block;
+            animation: fadeSlideUp 0.3s forwards;
+        }
+        .dropdown-content.fade-in{
+            display: block;
+            animation: fadeSlideDown 0.3s forwards;
+        }
+        .arrow {
+    font-size: 14px;
+    transition: transform 0.15s ease;
+    padding: 0 10px; /* Adjust padding for spacing */
+    transform: rotate(90deg);
+    }   
+    .bubble {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 1.5vh;
+    margin-bottom:2vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.bubble:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+blockquote {
+    font-style: italic;
+    margin-left: 4vw;
+    border-left: 4px solid #ccc;
+    padding-left: 4vw;
+    color: #555;
+}
+.card-container {
+    position: relative;
+    z-index: 10006;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: fixed; /* Fixed position for popup */
+    top: 30%; /* Center vertically */
+    left: 30%; /* Center horizontally */
+    z-index: 1000; /* Ensure it stays on top */
+    height: auto; /* Set a fixed width for the card */
+    width: 30vw;
+}
+body.bg-gray {
+    background-color: rgba(211, 211, 211, 0.5); /* Faint gray */
+}
+.card-content {
+
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.card-title {
+    margin: 0 10px 0 0; /* Spacing from image */
+}
+.card-text {
+    
+    opacity: 1; /* Start fully visible */
+}
+.card-image.show,
+.card-title.show,
+.card-text.show {
+    opacity: 0; /* Fade out */
+    animation: fadeIn .3s ease forwards;
+}
+.card-image.hidden,
+.card-title.hidden,
+.card-text.hidden {
+    opacity: 0; /* Fade out */
+    animation: fadeOut .3s ease forwards;
+}
+.card-image {
+    width: auto; /* Set a fixed width for the image */
+    height: 20vh; /* Maintain aspect ratio */
+    
+    border-radius: 4px;
+}
+.card.show {
+    display: block; /* Show the card */
+    animation: fadeIn 0.5s ease forwards; /* Fade in animation */
+}
+.card.hide {
+    animation: fadeOut 0.5s ease forwards; /* Fade out animation */
+}
+/* Container for both narratives */
+/* General Container for Both Narratives */
+.narrative-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+/* Style for Each Narrative Section */
+.narrative {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: justify;
+}
+
+/* Hover effect */
+.narrative:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Icons to differentiate narratives */
+.narrative .fas {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Distinct color schemes */
+.intended-narrative {
+
+    border-left: 5px solid #1565c0; /* Blue border */
+}
+
+.modern-narrative {
+
+    border-left: 5px solid #c62828; /* Red border */
+}
+
+/* Narrative Divider (VS) */
+.narrative-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+.narrative-divider:hover{
+    animation: rotate 2s forwards;
+}
+.vs-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    border-radius: 20%;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight key points */
+.highlight {
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(255, 255, 0, 0.3); /* Soft highlight background */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Divider between paragraphs */
+hr {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+/* Narrative Titles */
+.narrative h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .narrative-container {
+        flex-direction: column;
+    }
+
+    .narrative-divider {
+        padding: 10px;
+    }
+
+    .narrative {
+        margin-bottom: 20px;
+    }
+
+    .vs-text {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+}
+.minority-discussion {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    transition: all 0.3s ease;
+
+    text-align: justify;
+}
+.minority-discussion:hover{
+    transform: scale(1.02);
+}
+
+/* Style for emphasized text */
+.minority-discussion strong {
+    color: #c62828;
+}
+
+/* Margin between paragraphs */
+.minority-discussion p {
+    margin-bottom: 15px;
+}
+.guide{
+    margin-top: 2vh;
+    transition: all 0.3s ease; /* Ensure the bubble transitions smoothly */
+
+}
+.guide blockquote {
+    margin-left: 1vw;
+}
+.guide-row{
+
+    width: auto;
+    height: auto;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    margin-bottom: 2vh;
+    padding: 1vh;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border:  2px solid transparent;
+    transition: border-radius 0.5s ease; /* Smooth transition for border-radius */
+
+    
+}
+.guide-row:hover{
+    border-radius: 5px;
+}
+.guide-row p {
+  
+    margin-left: 1vw;
+    font-size: 1.5vh;
+}
+.guide-img{
+    cursor: pointer;
+    object-fit: cover;
+    width: 3vw;
+    height: auto;
+}
+
+        @keyframes rotate{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        /* Keyframe animation for fade and slide down */
+        @keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+       @keyframes fadeSlideUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+        @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Optional: Slide down slightly */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Final position */
+    }
+    
+    
+    }
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px); /* Slide up slightly */
+    }
+}
+
+
+/* Update card class for fade-out */
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="icon" onclick="showPage(1)"><img src="home.png" alt="Page 1"></div>
+        <div class="icon" onclick="showPage(2)"><img src="events.jpg" alt="Page 2"></div>
+        <div class="icon" onclick="showPage(3)"><img src="war.png" alt="Page 3"></div>
+        <div class="icon" onclick="showPage(4)"><img src="people.jpg" alt="Page 4"></div>
+        <div class="icon" onclick="showPage(5)"><img src="sources.jpg" alt="Page 5"></div>
+    </div>
+
+    <div class="main-content" id="page1">
+        <div class="page1-wrapper">
+            <div class="dropdown-container">
+                <div class="dropdown" id="d1">
+                    <div class="dropdown-header">
+                        <button onclick="toggleDropdown(1)">Focuses of Project</button>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="dropdown-content" id="dropdown1">
+                        <ul>
+                            <li>investigating how specific narratives are intentionally pushed in historical films to encourage certain sentiments and ideals.</li>
+                            <li>decipher how certain events may alter the historical beliefs of people who watch the movie. </li>
+                            <li>compare the intended narrative to modern narratives people have about these events today.</li>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="dropdown" id="d2">
+                    <div class="dropdown-header">
+                        <button onclick="toggleDropdown(2)">Why I chose this project</button>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="dropdown-content" id="dropdown2">
+                        <p>I chose to make a website for my project because it allows me to develop skills in not one but two of my classes. I enjoy making websites and analyzing almost anything so this is a very easy and enjoyable route to take.</p>
+                    </div>
+                </div>
+            
+                <div class="dropdown" id="d3">
+                    <div class="dropdown-header">
+                        <button onclick="toggleDropdown(3)">Why the Patriot is a good fit for this project</button>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="dropdown-content" id="dropdown3">
+                        <ul>
+                            <li> The film demonstrates social hierarchies, from landowners like Benjamin Martin to enslaved individuals, servants, and soldiers.</li>
+                            <li> It shows the importance of family, the challenges of raising children during wartime, and the roles of different family members, from household responsibilities to emotional support.</li>
+                        </ul>
+                    </div>
+                </div>
+            
+                <div class="dropdown" id = "d4">
+                    <div class="dropdown-header">
+                        <button onclick="toggleDropdown(4)">The Patriot's credibility</button>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="dropdown-content" id="dropdown4">
+                        <p>I take this movie to be less historically credible due to its intention to entertain over inform, however its credibility does extend to: historically accurate ways of life, historically accurate technology and contain events which actually unfolded in the past.</p>
+                    </div>
+                </div>
+                <div class="guide">
+                    <div class = "guide-row" id = "Home-Icon" >
+                        <img class = "guide-img" src="home.png" onclick="showPage(1)" alt="">
+                        <blockquote>
+                            <p>
+                                "Home-Page" where you can find an outline of the information in this project via the dropdowns
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class = "guide-row" id = "Events-Icon" >
+                        <img class = "guide-img" src="events.jpg" onclick="showPage(2)" alt="">
+                        <blockquote>
+                            <p>
+                                "Events/Themes" page where all the real-life events and themes/sentiments in the movie are listed
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class = "guide-row" id = "War-icon" >
+                        <img class = "guide-img" src="war.png" onclick="showPage(3)" alt="">
+                        <blockquote>
+                            <p>
+                                "Intended Narrative Vs Modern Narrative" page where the two perspectives and their respective opinions are explained
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class = "guide-row" id = "Person-Icon" >
+                        <img class = "guide-img" src="people.jpg" onclick="showPage(4)" alt="">
+                        <blockquote>
+                            <p>
+                                 "People" page where the historical accuarcy and role of the person(s) are outlined
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class = "guide-row" id = "Sources-Icon" >
+                        <img class = "guide-img" src="sources.jpg" onclick="showPage(5)" alt="">
+                        <blockquote>
+                            <p>
+                                "Bibliography" where all the sources I used to garner info are listed
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            
+        <div class="img-cont">
+        <img class="large-img" src="patriot.jpg" href="https://www.google.com/search?q=the+patriot+movie&rlz=1C1UEAD_enUS1114US1114&oq=The+patriot&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgYIARBFGDkyDAgCECMYJxiABBiKBTIPCAMQLhgUGIcCGLEDGIAEMg8IBBAAGBQYhwIYsQMYgAQyEAgFEC4YrwEYxwEYgAQYjgUyBggGEEUYPTIGCAcQRRg80gEIMzU1OWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8">
+        </div>
+        </div>
+    </div>
+
+    <div class="main-content" id="page2">
+        <h1>Themes/Events</h1>
+        
+        <section class="event-section">
+            <h2>Real Historical Events Portrayed in the Film</h2>
+            <p><em>The Patriot</em> includes a mix of fictionalized and real events from the American Revolutionary War. Some key events in the film that have historical roots include:</p>
+            <ul class="custom-list">
+                <li><span>The Burning of the Church:</span> British forces burn down a church with civilians inside, a scene inspired by real atrocities, though dramatized for effect.</li>
+                <li><span>Guerrilla Warfare:</span> Benjamin Martin’s tactics are based on figures like Francis Marion, known for unconventional warfare in the Southern colonies.</li>
+                <li><span>The Tarleton Connection:</span> The British officer Tavington is loosely based on Banastre Tarleton, infamous for his ruthless battlefield tactics.</li>
+            </ul>
+        </section>
+        
+        <section class="belief-section">
+            <h2>Impact on Viewers' Beliefs</h2>
+            <p>The film’s portrayal of these events can influence viewers' perceptions of the American Revolution:</p>
+            <ul class="custom-list">
+                <li><span>Morality of War:</span> The film highlights the moral complexities of war, encouraging reflection beyond a simplistic "good vs. evil" narrative.</li>
+                <li><span>Patriotism and Resistance:</span> Themes of patriotism and the fight for freedom may inspire admiration for the colonists' struggle for independence.</li>
+                <li><span>Heroism and Sacrifice:</span> The depiction of personal sacrifice and heroism might urge viewers to reconsider the true costs of war on families and communities.</li>
+            </ul>
+        </section>
+        
+        <section class="sentiment-section">
+            <h2>Sentiments Pushed by the Film</h2>
+            <p><em>The Patriot</em> pushes a few core sentiments that resonate with its audience:</p>
+            <ul class="custom-list">
+                <li><span>Patriotism:</span> The film frames the colonists as defenders of liberty, casting British forces as oppressors.</li>
+                <li><span>Family and Honor:</span> A recurring theme is the protection of family and fighting for personal honor, evoking strong emotional responses.</li>
+                <li><span>Survival and Freedom:</span> The struggle for survival and independence is a central theme, underscoring the importance of freedom at both personal and national levels.</li>
+            </ul>
+        </section>
+    </div>
+    
+    
+
+    <div class="main-content" id="page3">
+        <h1>Intended Narrative Vs Modern Narrative</h1>
+        <div class="narrative-container">
+            <div class="narrative intended-narrative">
+                <h2>Intended Narrative</h2>
+                <div class="narrative-content">
+                    <i class="fas fa-flag-usa"></i> 
+                    <p class="highlight">When <em>The Patriot</em> was released in 2000, the filmmakers sought to create an epic portrayal of American patriotism during the Revolutionary War.</p>
+                    <p>Benjamin Martin who was portrayed by Mel Gibson, was designed as a heroic yet conflicted figure representing a man torn between his desire to protect his family and his duty to his country. The narrative was meant to reflect themes of personal freedom, the cost of war, and the fight for independence - highlighting the resilience and determination of the American spirit.</p>
+    
+                    <hr>
+    
+                    <p>Through the lens of historical fiction, the film aimed to emotionally connect audiences with the American Revolution, using personal vendettas and a family-centered storyline to make the larger conflict feel accessible and deeply personal. It celebrates the revolutionary cause as a just and noble fight, and the protagonist's arc is one of redemption and leadership in a time of great turmoil.</p>
+                </div>
+            </div>
+    
+            <div class="narrative-divider">
+                <span class="vs-text">VS</span>
+            </div>
+    
+            <div class="narrative modern-narrative">
+                <h2>Modern Narrative</h2>
+                <div class="narrative-content">
+                    <i class="fas fa-glasses"></i> 
+                    <p class="highlight">In recent years, modern audiences and historians have critiqued <em>The Patriot</em> for its historical inaccuracies and overly simplistic portrayal of both the American Revolution and the characters involved.</p>
+                    <p>Critics argue that the film tends to gloss over more complex aspects of the war, including the treatment of Native Americans, the institution of slavery, and the nuanced motivations behind the conflict.</p>
+    
+                    <hr> 
+    
+                    <p>Moreover, some modern viewers see the film’s portrayal of the British as overly villainous, especially in its representation of Colonel Tavington as a bloodthirsty tyrant. This has raised concerns about the exaggerated “good vs evil” dichotomy in the film’s storytelling, which simplifies the real, multifaceted nature of the war. Today, many recognize <em>The Patriot</em> as more of a patriotic fantasy than a reliable depiction of the Revolution.</p>
+                </div>
+            </div>
+        </div>
+        <div class="minority-discussion">
+            <p><strong>The Patriot</strong> has also been criticized for its lack of representation of minority groups during the American Revolution. While the film features some African American characters, their roles are limited, and the movie avoids addressing the complex reality of slavery and the struggles of Native American populations during that time. Instead, the focus is more on creating an action-packed, entertaining storyline rather than presenting a nuanced, historically accurate portrayal of life in the late 18th century.</p>
+            <p>This emphasis on entertainment over realism means that the movie often sacrifices historical depth for the sake of drama, further distancing itself from the actual ways of life during the Revolutionary War era.</p>
+        </div>
+    </div>
+    
+    <div class="main-content" id="page4">
+        <h1>People</h1>
+        
+        <div class="bubble">
+            <p><strong>Benjamin Martin (Mel Gibson):</strong> A composite character loosely based on historical figures such as Francis Marion, known as the "Swamp Fox."</p>
+            <blockquote>
+                <p>Benjamin Martin's character is a fictionalized hero created to embody the spirit of resistance. The film exaggerates his role and impact compared to real historical figures who were part of larger military efforts.</p>
+            </blockquote>
+        </div>
+        
+        <div class="bubble">
+            <p><strong>Colonel Tavington (Jason Isaacs):</strong> A ruthless British officer, modeled loosely after historical figures like Banastre Tarleton.</p>
+            <blockquote>
+                <p>Colonel Tavington is a fictionalized version of Tarleton, who was known for his aggressive tactics. The film creates a more villainous character than historical accounts suggest.</p>
+            </blockquote>
+        </div>
+        
+        <div class="bubble">
+            <p><strong>General Cornwallis (Tom Wilkinson):</strong> The British commander in the film, portrayed as a strategic leader in the conflict.</p>
+            <blockquote>
+                <p>General Cornwallis was indeed a significant figure in the war, but his portrayal in the film is less focused on his real strategic and political complexities.</p>
+            </blockquote>
+        </div>
+        
+        <div class="bubble">
+            <p><strong>Jean Villeneuve (Tchéky Karyo):</strong> A French officer who assists the American militia in the film. He is a fictional character, but he represents the real involvement of the French forces during the American Revolutionary War.</p>
+            <blockquote>
+                <p>Although not based on a specific individual, Jean Villeneuve symbolizes the critical French alliance that contributed to American success in the war, especially at the Battle of Yorktown.</p>
+            </blockquote>
+        </div>
+    
+        <div class="bubble">
+            <p><strong>Harry Burwell (Chris Cooper):</strong> Based on General Nathanael Greene, a real American officer who played a key role in the southern campaigns of the Revolutionary War.</p>
+            <blockquote>
+                <p>While "Colonel Harry Burwell" is a fictionalized version, his military strategies and leadership qualities are inspired by the real Nathanael Greene, one of George Washington's most trusted generals.</p>
+            </blockquote>
+        </div>
+        
+        <div class="bubble">
+            <p><strong>Occam (Jay Arlen Jones):</strong> A freed slave who joins Benjamin Martin's militia in exchange for freedom. He represents African Americans who fought in the Revolutionary War.</p>
+            <blockquote>
+                <p>Occam’s character serves as a reminder of the role that African American soldiers played in the war, many of whom fought for the promise of freedom.</p>
+            </blockquote>
+        </div>
+    </div>
+    
+    
+    <div class="main-content" id="page5">
+        <h1>Sources</h1>
+        <div class="source">
+            <p><strong>St. George, William Ross.</strong> “The Patriot: Movie Review - Study the Past.” <em>studythepast</em>. Accessed September 5, 2024. <a href="https://www.studythepast.com/patriotreview.pdf" target="_blank">https://www.studythepast.com/patriotreview.pdf</a></p>
+        </div>
+        <div class="source">
+            <p><strong>“Battle of Guilford Courthouse.”</strong> <em>Encyclopædia Britannica, Encyclopædia Britannica, Inc.</em>, Accessed 8 Sept. 2024. <a href="https://www.britannica.com/event/Battle-of-Guilford-Courthouse-1781" target="_blank">www.britannica.com/event/Battle-of-Guilford-Courthouse-1781</a></p>
+        </div>
+        <div class="source">
+            <p><strong>“The Battle of Cowpens.”</strong> <em>National Parks Service, U.S. Department of the Interior.</em> Accessed 8 Sept. 2024. <a href="https://www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm" target="_blank">www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm</a></p>
+        </div>
+        <div class="source">
+            <p><strong> Glancy, Mark, “The War of Independence in Feature Films”</strong> <em>: ‘Special Relationship’ between Hollywood and Britain.</em> Accessed 3 Oct. 2024. <a href="https://www.tandfonline.com/doi/pdf/10.1080/01439680500262892" target="_blank">www.tandfonline.com/doi/pdf/10.1080/01439680500262892</a></p>
+        </div>
+        <div class="source">
+            <p><strong>The Patriot Movie Research Paper.</strong> <em>123 HELPME</em> Accessed 9 Sept. 2024. <a href="https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV" target="_blank">https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV</a></p>
+        </div>
+    </div>
+   
+    <div class="card-container">
+        <div class="card" id="card">
+            <h2 class="card-title">Card Title</h2>
+            <div class="card-content">
+                <p class="card-text">This is some descriptive text that provides information about the content of the card. It is aligned to the left of the image.</p>
+                <img src="patriot.jpg" alt="Image" class="card-image">
+            </div>
+        </div>
+    </div>
+    <div class="watermark-container">
+        <a href="https://www.linkedin.com/in/orion-beck-0239a2326/" target="_blank">
+            <img class="watermark-image" src="linkedin.svg" alt="LinkedIn Profile">
+        </a>
+    </div>
+
+    <script>
+        document.querySelector(".card-container").style.display = 'none';
+        let isopen = false;
+        let prevnum;
+        let samenumc = 0;
+        let prevclicked;
+        const characters = {
+            "0": {
+                name: "Benjamin Martin",
+                description: "While Benjamin Martin is a fictional character, he is based on a multitude of historical characters who all of which emobodied the Amercain-Spirit, Francis Marion (as pictured), Thomas Sumter, Daniel Morgan, Nathanael Greene and Andrew Pickens.",
+                image: "francis.jpg"
+            },
+            "1": {
+                name: "Colonel Tavington",
+                description: "Colonel Tavington was a fictional character in the Mel Gibson movie 'The Patriot'. However he was based on a real officer from that time - a Colonel named Sir Banastre Tarleton (as pictured) who was an English cavalry commander.",
+                image: "banastre.jpeg"
+            },
+            "2": {
+                name: "General Cornwallis",
+                description: "General Charles Cornwallis (Genuine Historical Figure) is the overarching antagonist of the 2000 historical war film The Patriot. He is a leading General of the British Army in the American Revolution and the commanding officer of Colonel William Tavington.",
+                image: "corn.jpg"
+            },
+            "3": {
+                name: "Jean Villeneuve",
+                description: "Jean Villeneuve, (a real person) was a Major in the French Army during the American Revolutionary War. In 1780, he was sent to help train the American colonial militia in South Carolina, assisting Benjamin Martin with fighting his guerrilla war against the British.",
+                image: "jean.jpg"
+            },
+            "4": {
+                name: "Harry Burwell",
+                description: "Colonel Harry Burwell is a fictional character in The Patriot, however he was was inspired by the Continental Army colonel of Henry Lee.",
+                image: "henry.jpeg"
+            },
+            "5": {
+                name: "Occam",
+                description: "Occam, a fictional character yet essential character to the context of the era, was a freed slave who joins Benjamin Martin's militia in exchange for freedom. He represents African Americans who fought in the Revolutionary War. ",
+                image: "occam.jpg"
+            }
+        };
+        const bubbles = document.querySelectorAll(".bubble")
+        bubbles.forEach(function(x){
+            x.addEventListener("click",function(){
+                card.style.display = 'block';
+                document.querySelector(".card-container").style.display = 'block';
+                let idx = Array.from(bubbles).indexOf(x)
+                card.classList.add("show"); // Add show class for fade-in
+                if(Array.from(bubbles).includes(prevclicked)){
+                    document.querySelector(".card-text").classList.add("hidden")
+                    document.querySelector(".card-title").classList.add("hidden")
+                    document.querySelector(".card-image").classList.add("hidden")
+                    setTimeout(() => {
+                        document.querySelector(".card-text").classList.remove("hidden")
+                        document.querySelector(".card-title").classList.remove("hidden")
+                        document.querySelector(".card-image").classList.remove("hidden")
+                        document.querySelector(".card-text").classList.add("show")
+                        document.querySelector(".card-title").classList.add("show")
+                        document.querySelector(".card-image").classList.add("show")
+                        document.querySelector(".card-title").textContent = characters[idx].name
+                        document.querySelector(".card-text").textContent = characters[idx].description
+                        document.querySelector(".card-image").src = characters[idx].image
+                        setTimeout(() => {
+                            document.querySelector(".card-text").classList.remove("show")
+                            document.querySelector(".card-title").classList.remove("show")
+                            document.querySelector(".card-image").classList.remove("show")
+                        }, 300); // Match this timeout with the duration of fade-out
+                    },300);
+                }else{
+                    document.querySelector(".card-text").classList.add("show")
+                    document.querySelector(".card-title").classList.add("show")
+                    document.querySelector(".card-image").classList.add("show")
+                    document.querySelector(".card-title").textContent = characters[idx].name
+                    document.querySelector(".card-text").textContent = characters[idx].description
+                    document.querySelector(".card-image").src = characters[idx].image
+                    setTimeout(() => {
+                    document.querySelector(".card-text").classList.remove("show")
+                    document.querySelector(".card-title").classList.remove("show")
+                    document.querySelector(".card-image").classList.remove("show")
+
+                }, 300); // Match this timeout with the duration of fade-out
+                }
+                
+               
+
+            })
+        })
+        function moveup(number){
+            isopen = false;
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if(parseInt(dropdown.parentElement.getAttribute("id").split('d')[1]) > number){
+                    dropdown.parentElement.style.transform = "translateY(0)"
+                }
+            })
+            document.querySelector(".guide").style.transform = "translateY(0)"
+        }
+        function movedown(number){
+            isopen = true;
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if(parseInt(dropdown.parentElement.getAttribute("id").split('d')[1]) > number){
+                    dropdown.parentElement.style.transform = "translateY(14vh)"
+                }
+            })
+            document.querySelector(".guide").style.transform = "translateY(14vh)"
+        }
+        function toggleDropdown(number) {
+            const dropdownContent = document.getElementById('dropdown' + number);
+
+            var samebuttonflag = false;
+            // Close other dropdowns
+            if(number == prevnum){
+                samebuttonflag = true;
+                samenumc +=1
+            }else{
+                samenumc = 0
+            }
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                
+                if (dropdown !== dropdownContent) {
+                    dropdown.style.display = 'none';
+                }
+                dropdown.parentElement.querySelector(".arrow").style.transform = "rotate(90deg)";
+            });
+            moveup(prevnum)
+            if (samenumc % 2 == 0){
+                movedown(number)
+            }
+            
+            // Toggle current dropdown
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.animation = 'fadeSlideUp .5s forwards'
+                        setTimeout(function(){
+                        dropdownContent.style.display = 'none';
+                    },500)
+            } else {
+                dropdownContent.parentElement.querySelector(".arrow").style.transform = "rotate(0deg)";
+                dropdownContent.style.display = 'block';
+                dropdownContent.style.animation = 'fadeSlideDown 0.5s forwards'; // Apply animation
+            }
+            prevnum = number;
+        }
+
+        // Close dropdown when clicking outside of it
+        window.onclick = function(event) {
+            prevclicked = event.target;
+            if (!event.target.matches('.dropdown button')) {
+
+                moveup(prevnum)
+                samenumc +=1;
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown.style.display != 'none'){
+                        dropdown.parentElement.querySelector(".arrow").style.transform = "rotate(90deg)";
+                        dropdown.style.animation = 'fadeSlideUp .5s forwards'
+                        setTimeout(function(){
+                        dropdown.style.display = 'none';
+                    },300)
+                    }
+                    
+                });
+            }
+            if(!event.target.matches(".bubble") && !event.target.className.includes("card") && !event.target.parentElement.parentElement.className.includes("bubble") && !event.target.parentElement.className.includes("bubble")){
+                card.classList.add("hide"); // Add hide class to fade out
+            setTimeout(() => {
+                card.classList.remove("show", "hide"); // Reset classes after animation
+                card.style.display = "none"; // Hide the card after animation
+            }, 300); // Match this timeout with the duration of fade-out
+
+            }
+        }
+        let lastclicked;
+        function showPage(pageNumber) {
+            if( document.getElementById('page' + pageNumber) == lastclicked){
+                return;
+            }
+            samenumc = 0;
+            if(lastclicked){
+                lastclicked.classList.add("outro-animation");
+            }
+            
+            setTimeout(function(){
+                const pages = document.querySelectorAll('.main-content');
+            pages.forEach(page => {
+                page.style.display = "none";
+                
+            });
+            if (lastclicked){
+                lastclicked.classList.remove("outro-animation");
+            }
+                lastclicked = document.getElementById('page' + pageNumber); 
+                document.getElementById('page' + pageNumber).style.display = "block";
+                lastclicked.classList.add("intro-animation");
+                setTimeout(function(){
+                lastclicked.classList.remove("intro-animation");
+                }, 500)
+            }, 450)
+            
+            
+        }
+
+        // Show the first page by default
+        showPage(1);
+    </script>
+</body>
+</html>
