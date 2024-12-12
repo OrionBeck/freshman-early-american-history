@@ -19,7 +19,7 @@
 
         .sidebar {
             width: 60px;
-            height: 100%;
+            height: 100vw;
             color: white;
             display: flex;
             flex-direction: column;
@@ -77,11 +77,7 @@
         margin-top: 20px;
     }
 
-    p {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #34495e;
-    }
+
 
     ul.custom-list {
         padding-left: 20px;
@@ -105,6 +101,7 @@
     }
 
     .event-section, .belief-section, .sentiment-section {
+        font-size: 1.5vh;
         margin-top: 30px;
     }
 
@@ -134,12 +131,7 @@
     padding-bottom: 5px;
 }
 
-.main-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 15px;
-}
+
 
 .main-content strong {
     font-weight: bold;
@@ -236,12 +228,13 @@
 
 
 .source {
-    margin-bottom: 20px; /* Adds space between each source */
+    margin-bottom: 2vh; /* Adds space between each source */
     padding: 10px; /* Adds padding to each source block */
     border-left: 4px solid #0056b3; /* Adds a colored left border */
 }
 
 .source p {
+    font-size: 1.3rem;
     margin: 0; /* Resets the margin for paragraph */
 }
 
@@ -255,7 +248,7 @@
 }
 .img-cont{
     height: 100%;
-    width: 100%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: top;
@@ -263,9 +256,10 @@
 }
 
 .large-img{
+    margin-left: 20%;
     width: 100%;
     height: 80vh;
-    width: 30vw; /* ie8 */
+    width: 100%; /* ie8 */
     object-fit: cover;
     transform: scale(auto);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -275,6 +269,7 @@
 
 .dropdown-container {
             height: 100%;
+            max-width: 40%;
             justify-content: left;
             display: flex;
             flex-direction: column;
@@ -288,7 +283,7 @@
             border-radius: 15px;
             padding: .5vh;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            width: fit-content;
+            width: auto;
             transition: all 0.3s ease; /* Ensure the bubble transitions smoothly */
         }   
 
@@ -308,7 +303,7 @@
             border: 1px gray;
             border-radius: 10px;
             font-weight: 500;
-            font-size:1.75vh;
+            font-size:1.35vh;
             justify-content: left; /* Horizontally center the content */
             text-align: left;
             align-items: center;
@@ -345,14 +340,14 @@
         .dropdown-content p {
             padding: 1.5vh;
             color: #333;
-            font-size: 1.5vh;
+            font-size: 1.4vh;
         }
         .dropdown-content ul {
-            padding:1.6vh;
+            padding:1.5vh;
         }
         .dropdown-content li {
             color: #333;
-            font-size: 1.6vh;
+            font-size: 1.5vh;
         }
         .page1-wrapper{
             display: flex;
@@ -429,7 +424,7 @@ body.bg-gray {
     margin: 0 10px 0 0; /* Spacing from image */
 }
 .card-text {
-    
+    font-size: 1.3rem;
     opacity: 1; /* Start fully visible */
 }
 .card-image.show,
@@ -474,6 +469,7 @@ body.bg-gray {
     flex: 1;
     padding: 20px;
     background-color: #ffffff;
+    font-size: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
@@ -574,7 +570,7 @@ hr {
     border-radius: 8px;
     margin-top: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+    font-size: 1.7rem;
     line-height: 1.6;
     color: #555;
     transition: all 0.3s ease;
@@ -633,6 +629,43 @@ hr {
     width: 3vw;
     height: auto;
 }
+.intro-section {
+    margin-right: 2vw;
+    margin-left:-1vw;
+    padding: 1vw;
+    width: 20%;
+    height:100%;
+    border-radius: 8px;
+}
+
+.intro-section h1 {
+    font-size: 2rem;
+    color: #333; /* Dark text for the title */
+    margin-bottom: 10px;
+}
+
+.intro-section p {
+    font-size: 1.4rem;
+    color: #555; /* Slightly lighter text color */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.intro-section strong {
+    font-weight: bold;
+}
+
+.intro-section em {
+    font-style: italic;
+}
+
+/* Optional: Style for the thesis statement to make it stand out */
+.intro-section strong {
+    font-size: 1.2rem;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
 
         @keyframes rotate{
             0%{
@@ -684,6 +717,7 @@ hr {
         opacity: 0;
         transform: translateY(-20px); /* Slide up slightly */
     }
+    
 }
 
 
@@ -700,8 +734,20 @@ hr {
         <div class="icon" onclick="showPage(5)"><img src="sources.jpg" alt="Page 5"></div>
     </div>
 
-    <div class="main-content" id="page1">
+    <div class="main-content" id="page1"> 
         <div class="page1-wrapper">
+            <div class="intro-section">
+                <h1>Exploring the Narrative Power of <b>The Patriot</b> </h1>
+                <p>
+                    This project delves into how historical films like <b> The Patriot </b> shape public perceptions of history by presenting specific narratives and emotional appeals. 
+                    By analyzing the intended storylines and their modern reinterpretations, this site seeks to uncover the intersection between cinematic storytelling and historical accuracy.
+                </p>
+                <p>
+                    <strong>Thesis:</strong> <b> The Patriot </b> employs dramatized historical events, personal heroism, and emotional narratives to inspire patriotism and reflect on the American Revolutionary War, but in doing so, it sacrifices historical nuance, pushing a simplified view of complex historical realities. 
+                    This project explores these dimensions to assess the film's impact on historical understanding and sentiment.
+                </p>
+            </div>
+            
             <div class="dropdown-container">
                 <div class="dropdown" id="d1">
                     <div class="dropdown-header">
@@ -710,125 +756,139 @@ hr {
                     </div>
                     <div class="dropdown-content" id="dropdown1">
                         <ul>
-                            <li>investigating how specific narratives are intentionally pushed in historical films to encourage certain sentiments and ideals.</li>
-                            <li>decipher how certain events may alter the historical beliefs of people who watch the movie. </li>
-                            <li>compare the intended narrative to modern narratives people have about these events today.</li>
+                            <li>Investigating how specific narratives are intentionally pushed in historical films to encourage certain sentiments and ideals.</li>
+                            <li>Deciphering how certain events may alter the historical beliefs of viewers who watch the movie.</li>
+                            <li>Comparing the intended narrative to modern perspectives about these historical events.</li>
                         </ul>
                     </div>
                 </div>
             
                 <div class="dropdown" id="d2">
                     <div class="dropdown-header">
-                        <button onclick="toggleDropdown(2)">Why I chose this project</button>
+                        <button onclick="toggleDropdown(2)">Why I Chose This Project</button>
                         <span class="arrow">▼</span>
                     </div>
                     <div class="dropdown-content" id="dropdown2">
-                        <p>I chose to make a website for my project because it allows me to develop skills in not one but two of my classes. I enjoy making websites and analyzing almost anything so this is a very easy and enjoyable route to take.</p>
+                        <p>
+                            I chose to create a website for this project because it allows me to develop skills in two of my classes simultaneously. I enjoy making websites and analyzing different topics, so this approach felt natural and enjoyable.
+                        </p>
                     </div>
                 </div>
             
                 <div class="dropdown" id="d3">
                     <div class="dropdown-header">
-                        <button onclick="toggleDropdown(3)">Why the Patriot is a good fit for this project</button>
+                        <button onclick="toggleDropdown(3)">Why <b>&nbsp;The Patriot&nbsp;</b> Is a Good Fit for This Project</button>
                         <span class="arrow">▼</span>
                     </div>
                     <div class="dropdown-content" id="dropdown3">
                         <ul>
-                            <li> The film demonstrates social hierarchies, from landowners like Benjamin Martin to enslaved individuals, servants, and soldiers.</li>
-                            <li> It shows the importance of family, the challenges of raising children during wartime, and the roles of different family members, from household responsibilities to emotional support.</li>
+                            <li>The film demonstrates social hierarchies, from landowners like Benjamin Martin to enslaved individuals, servants, and soldiers.</li>
+                            <li>It portrays the importance of family, the challenges of raising children during wartime, and the diverse roles within families, from household responsibilities to emotional support.</li>
                         </ul>
                     </div>
                 </div>
             
-                <div class="dropdown" id = "d4">
+                <div class="dropdown" id="d4">
                     <div class="dropdown-header">
-                        <button onclick="toggleDropdown(4)">The Patriot's credibility</button>
+                        <button onclick="toggleDropdown(4)">The Credibility of <b>&nbsp; The Patriot &nbsp;</b></button>
                         <span class="arrow">▼</span>
                     </div>
                     <div class="dropdown-content" id="dropdown4">
-                        <p>I take this movie to be less historically credible due to its intention to entertain over inform, however its credibility does extend to: historically accurate ways of life, historically accurate technology and contain events which actually unfolded in the past.</p>
+                        <p>
+                            While I view this movie as less historically credible due to its focus on entertainment over information, its credibility extends to historically accurate depictions of daily life, technology, and some events that actually occurred in the past.
+                        </p>
                     </div>
                 </div>
+                
                 <div class="guide">
-                    <div class = "guide-row" id = "Home-Icon" >
-                        <img class = "guide-img" src="home.png" onclick="showPage(1)" alt="">
+                    <div class="guide-row" id="Home-Icon">
+                        <img class="guide-img" src="home.png" onclick="showPage(1)" alt="Home Icon">
                         <blockquote>
-                            <p>
-                                "Home-Page" where you can find an outline of the information in this project via the dropdowns
-                            </p>
+                            <p>"Home Page" where you can find an outline of the project through dropdown menus.</p>
                         </blockquote>
                     </div>
-                    <div class = "guide-row" id = "Events-Icon" >
-                        <img class = "guide-img" src="events.jpg" onclick="showPage(2)" alt="">
+                    <div class="guide-row" id="Events-Icon">
+                        <img class="guide-img" src="events.jpg" onclick="showPage(2)" alt="Events Icon">
                         <blockquote>
-                            <p>
-                                "Events/Themes" page where all the real-life events and themes/sentiments in the movie are listed
-                            </p>
+                            <p>"Events/Themes" page listing real-life events and themes presented in the movie.</p>
                         </blockquote>
                     </div>
-                    <div class = "guide-row" id = "War-icon" >
-                        <img class = "guide-img" src="war.png" onclick="showPage(3)" alt="">
+                    <div class="guide-row" id="War-Icon">
+                        <img class="guide-img" src="war.png" onclick="showPage(3)" alt="War Icon">
                         <blockquote>
-                            <p>
-                                "Intended Narrative Vs Modern Narrative" page where the two perspectives and their respective opinions are explained
-                            </p>
+                            <p>"Intended Narrative vs. Modern Narrative" page discussing both perspectives and their implications.</p>
                         </blockquote>
                     </div>
-                    <div class = "guide-row" id = "Person-Icon" >
-                        <img class = "guide-img" src="people.jpg" onclick="showPage(4)" alt="">
+                    <div class="guide-row" id="Person-Icon">
+                        <img class="guide-img" src="people.jpg" onclick="showPage(4)" alt="People Icon">
                         <blockquote>
-                            <p>
-                                 "People" page where the historical accuarcy and role of the person(s) are outlined
-                            </p>
+                            <p>"People" page outlining the historical accuracy and roles of key characters.</p>
                         </blockquote>
                     </div>
-                    <div class = "guide-row" id = "Sources-Icon" >
-                        <img class = "guide-img" src="sources.jpg" onclick="showPage(5)" alt="">
+                    <div class="guide-row" id="Sources-Icon">
+                        <img class="guide-img" src="sources.jpg" onclick="showPage(5)" alt="Sources Icon">
                         <blockquote>
-                            <p>
-                                "Bibliography" where all the sources I used to garner info are listed
-                            </p>
+                            <p>"Bibliography" listing all sources used to gather information for the project.</p>
                         </blockquote>
                     </div>
                 </div>
             </div>
             
-        <div class="img-cont">
-        <img class="large-img" src="patriot.jpg" href="https://www.google.com/search?q=the+patriot+movie&rlz=1C1UEAD_enUS1114US1114&oq=The+patriot&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgYIARBFGDkyDAgCECMYJxiABBiKBTIPCAMQLhgUGIcCGLEDGIAEMg8IBBAAGBQYhwIYsQMYgAQyEAgFEC4YrwEYxwEYgAQYjgUyBggGEEUYPTIGCAcQRRg80gEIMzU1OWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8">
-        </div>
+            <div class="img-cont">
+                <img class="large-img" src="patriot.jpg" alt="The Patriot Movie Image">
+            </div>
         </div>
     </div>
+    
 
     <div class="main-content" id="page2">
-        <h1>Themes/Events</h1>
+        <h1>Themes and Events</h1>
         
         <section class="event-section">
             <h2>Real Historical Events Portrayed in the Film</h2>
-            <p><em>The Patriot</em> includes a mix of fictionalized and real events from the American Revolutionary War. Some key events in the film that have historical roots include:</p>
+            <p><b>The Patriot</b> combines dramatized storytelling with real historical events from the American Revolutionary War. Key events inspired by history include:</p>
             <ul class="custom-list">
-                <li><span>The Burning of the Church:</span> British forces burn down a church with civilians inside, a scene inspired by real atrocities, though dramatized for effect.</li>
-                <li><span>Guerrilla Warfare:</span> Benjamin Martin’s tactics are based on figures like Francis Marion, known for unconventional warfare in the Southern colonies.</li>
-                <li><span>The Tarleton Connection:</span> The British officer Tavington is loosely based on Banastre Tarleton, infamous for his ruthless battlefield tactics.</li>
+                <li>
+                    <span>The Burning of the Church:</span> While dramatized for emotional impact, this event reflects real atrocities committed during the war, illustrating the era's brutality.
+                </li>
+                <li>
+                    <span>Guerrilla Warfare:</span> The protagonist, Benjamin Martin, uses tactics influenced by historical figures like Francis Marion, known for leading unconventional resistance efforts in the Southern colonies.
+                </li>
+                <li>
+                    <span>The Tarleton Connection:</span> The character Tavington draws inspiration from Banastre Tarleton, a controversial British officer known for his ruthless conduct.
+                </li>
             </ul>
         </section>
         
         <section class="belief-section">
             <h2>Impact on Viewers' Beliefs</h2>
-            <p>The film’s portrayal of these events can influence viewers' perceptions of the American Revolution:</p>
+            <p>The portrayal of these events in <b>The Patriot</b> shapes how viewers interpret the American Revolution:</p>
             <ul class="custom-list">
-                <li><span>Morality of War:</span> The film highlights the moral complexities of war, encouraging reflection beyond a simplistic "good vs. evil" narrative.</li>
-                <li><span>Patriotism and Resistance:</span> Themes of patriotism and the fight for freedom may inspire admiration for the colonists' struggle for independence.</li>
-                <li><span>Heroism and Sacrifice:</span> The depiction of personal sacrifice and heroism might urge viewers to reconsider the true costs of war on families and communities.</li>
+                <li>
+                    <span>Morality of War:</span> By exploring both noble and dark aspects of the revolution, the film challenges audiences to think beyond a simple "good versus evil" framework.
+                </li>
+                <li>
+                    <span>Patriotism and Resistance:</span> Through its depiction of resilience and the fight for independence, the film fosters a deeper appreciation for the complexities of patriotism.
+                </li>
+                <li>
+                    <span>Heroism and Sacrifice:</span> Highlighting the sacrifices made by individuals and families, the film encourages viewers to consider the human cost of war.
+                </li>
             </ul>
         </section>
         
         <section class="sentiment-section">
             <h2>Sentiments Pushed by the Film</h2>
-            <p><em>The Patriot</em> pushes a few core sentiments that resonate with its audience:</p>
+            <p>The film emphasizes themes that resonate strongly with its audience, including:</p>
             <ul class="custom-list">
-                <li><span>Patriotism:</span> The film frames the colonists as defenders of liberty, casting British forces as oppressors.</li>
-                <li><span>Family and Honor:</span> A recurring theme is the protection of family and fighting for personal honor, evoking strong emotional responses.</li>
-                <li><span>Survival and Freedom:</span> The struggle for survival and independence is a central theme, underscoring the importance of freedom at both personal and national levels.</li>
+                <li>
+                    <span>Patriotism:</span> Depicting colonists as defenders of liberty and British forces as oppressors, the film reinforces a pro-revolutionary sentiment.
+                </li>
+                <li>
+                    <span>Family and Honor:</span> Central to the narrative is the protection of loved ones and the pursuit of personal honor, evoking powerful emotional connections.
+                </li>
+                <li>
+                    <span>Survival and Freedom:</span> The overarching struggle for survival and independence underscores the value of freedom on both personal and collective levels.
+                </li>
             </ul>
         </section>
     </div>
@@ -842,8 +902,8 @@ hr {
                 <h2>Intended Narrative</h2>
                 <div class="narrative-content">
                     <i class="fas fa-flag-usa"></i> 
-                    <p class="highlight">When <em>The Patriot</em> was released in 2000, the filmmakers sought to create an epic portrayal of American patriotism during the Revolutionary War.</p>
-                    <p>Benjamin Martin who was portrayed by Mel Gibson, was designed as a heroic yet conflicted figure representing a man torn between his desire to protect his family and his duty to his country. The narrative was meant to reflect themes of personal freedom, the cost of war, and the fight for independence - highlighting the resilience and determination of the American spirit.</p>
+                    <p class="highlight">When <b>The Patriot</b> was released in 2000, the filmmakers sought to create an epic portrayal of American patriotism during the Revolutionary War.</p>
+                    <p>Benjamin Martin, portrayed by Mel Gibson, was designed as a heroic yet conflicted figure, representing a man torn between his desire to protect his family and his duty to his country. His character serves as an amalgamation of various historical figures, embodying the ideals of resilience and unconventional tactics used in the Southern campaigns. The narrative sought to highlight themes of personal freedom, the cost of war, and the fight for independence, while using dramatic license to amplify emotional engagement.</p>
     
                     <hr>
     
@@ -859,17 +919,17 @@ hr {
                 <h2>Modern Narrative</h2>
                 <div class="narrative-content">
                     <i class="fas fa-glasses"></i> 
-                    <p class="highlight">In recent years, modern audiences and historians have critiqued <em>The Patriot</em> for its historical inaccuracies and overly simplistic portrayal of both the American Revolution and the characters involved.</p>
-                    <p>Critics argue that the film tends to gloss over more complex aspects of the war, including the treatment of Native Americans, the institution of slavery, and the nuanced motivations behind the conflict.</p>
+                    <p class="highlight">In recent years, modern audiences and historians have critiqued <b>The Patriot</b> for its historical inaccuracies and overly simplistic portrayal of both the American Revolution and the characters involved.</p>
+                    <p>Critics highlight that the film marginalizes critical aspects of the war, such as the treatment of enslaved individuals and Native Americans, choosing instead to focus on a dramatized, binary conflict. Furthermore, the depiction of the British forces as overwhelmingly villainous, exemplified by Colonel Tavington’s bloodthirsty characterization, underscores the exaggerated “good vs evil” dichotomy that simplifies the war's multifaceted reality.</p>
     
                     <hr> 
     
-                    <p>Moreover, some modern viewers see the film’s portrayal of the British as overly villainous, especially in its representation of Colonel Tavington as a bloodthirsty tyrant. This has raised concerns about the exaggerated “good vs evil” dichotomy in the film’s storytelling, which simplifies the real, multifaceted nature of the war. Today, many recognize <em>The Patriot</em> as more of a patriotic fantasy than a reliable depiction of the Revolution.</p>
+                    <p>Many modern viewers interpret <b>The Patriot</b> as a patriotic fantasy rather than a historically reliable depiction of the Revolution, noting its emphasis on dramatization and entertainment over accuracy.</p>
                 </div>
             </div>
         </div>
         <div class="minority-discussion">
-            <p><strong>The Patriot</strong> has also been criticized for its lack of representation of minority groups during the American Revolution. While the film features some African American characters, their roles are limited, and the movie avoids addressing the complex reality of slavery and the struggles of Native American populations during that time. Instead, the focus is more on creating an action-packed, entertaining storyline rather than presenting a nuanced, historically accurate portrayal of life in the late 18th century.</p>
+            <p><strong>The Patriot</strong> has also been criticized for its lack of representation of minority groups during the American Revolution. Modern critiques point to the film’s limited representation of African Americans and Native Americans, whose significant roles in the Revolutionary War are largely overshadowed by the central narrative's focus on dramatized heroism. While Occam’s character reflects the plight of African American soldiers fighting for freedom, the broader struggles of minority populations remain largely unaddressed.</p>
             <p>This emphasis on entertainment over realism means that the movie often sacrifices historical depth for the sake of drama, further distancing itself from the actual ways of life during the Revolutionary War era.</p>
         </div>
     </div>
@@ -880,21 +940,21 @@ hr {
         <div class="bubble">
             <p><strong>Benjamin Martin (Mel Gibson):</strong> A composite character loosely based on historical figures such as Francis Marion, known as the "Swamp Fox."</p>
             <blockquote>
-                <p>Benjamin Martin's character is a fictionalized hero created to embody the spirit of resistance. The film exaggerates his role and impact compared to real historical figures who were part of larger military efforts.</p>
+                <p>Benjamin Martin's character serves as an amalgamation of various historical figures, embodying the ideals of resilience and unconventional tactics used in the Southern campaigns. The film exaggerates his role and impact compared to real historical figures who were part of larger military efforts.</p>
             </blockquote>
         </div>
         
         <div class="bubble">
             <p><strong>Colonel Tavington (Jason Isaacs):</strong> A ruthless British officer, modeled loosely after historical figures like Banastre Tarleton.</p>
             <blockquote>
-                <p>Colonel Tavington is a fictionalized version of Tarleton, who was known for his aggressive tactics. The film creates a more villainous character than historical accounts suggest.</p>
+                <p>Tavington’s portrayal exaggerates Tarleton’s aggressive tactics, transforming him into a symbol of British tyranny to suit the film’s narrative.</p>
             </blockquote>
         </div>
         
         <div class="bubble">
             <p><strong>General Cornwallis (Tom Wilkinson):</strong> The British commander in the film, portrayed as a strategic leader in the conflict.</p>
             <blockquote>
-                <p>General Cornwallis was indeed a significant figure in the war, but his portrayal in the film is less focused on his real strategic and political complexities.</p>
+                <p>General Cornwallis was indeed a significant figure in the war, but his portrayal in the film is less focused on his real strategic and political complexities, opting instead for dramatic tension.</p>
             </blockquote>
         </div>
         
@@ -915,30 +975,32 @@ hr {
         <div class="bubble">
             <p><strong>Occam (Jay Arlen Jones):</strong> A freed slave who joins Benjamin Martin's militia in exchange for freedom. He represents African Americans who fought in the Revolutionary War.</p>
             <blockquote>
-                <p>Occam’s character serves as a reminder of the role that African American soldiers played in the war, many of whom fought for the promise of freedom.</p>
+                <p>Occam’s character reflects the plight of African American soldiers who joined the war with the hope of gaining freedom, yet the film avoids delving into the systemic injustices they faced during and after the conflict.</p>
             </blockquote>
         </div>
     </div>
     
     
+    
     <div class="main-content" id="page5">
-        <h1>Sources</h1>
+        <h1>Bibliography</h1>
         <div class="source">
-            <p><strong>St. George, William Ross.</strong> “The Patriot: Movie Review - Study the Past.” <em>studythepast</em>. Accessed September 5, 2024. <a href="https://www.studythepast.com/patriotreview.pdf" target="_blank">https://www.studythepast.com/patriotreview.pdf</a></p>
+            <p>St. George, William Ross. “<b>The Patriot</b>: Movie Review - Study the Past.” <em>Study the Past</em>. Accessed 5 September 2024, <a href="https://www.studythepast.com/patriotreview.pdf" target="_blank">https://www.studythepast.com/patriotreview.pdf</a>.</p>
         </div>
         <div class="source">
-            <p><strong>“Battle of Guilford Courthouse.”</strong> <em>Encyclopædia Britannica, Encyclopædia Britannica, Inc.</em>, Accessed 8 Sept. 2024. <a href="https://www.britannica.com/event/Battle-of-Guilford-Courthouse-1781" target="_blank">www.britannica.com/event/Battle-of-Guilford-Courthouse-1781</a></p>
+            <p>“Battle of Guilford Courthouse.” <em>Encyclopædia Britannica</em>, Encyclopædia Britannica, Inc., Accessed 8 September 2024, <a href="https://www.britannica.com/event/Battle-of-Guilford-Courthouse-1781" target="_blank">https://www.britannica.com/event/Battle-of-Guilford-Courthouse-1781</a>.</p>
         </div>
         <div class="source">
-            <p><strong>“The Battle of Cowpens.”</strong> <em>National Parks Service, U.S. Department of the Interior.</em> Accessed 8 Sept. 2024. <a href="https://www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm" target="_blank">www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm</a></p>
+            <p>“The Battle of Cowpens.” <em>National Parks Service</em>, U.S. Department of the Interior, Accessed 8 September 2024, <a href="https://www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm" target="_blank">https://www.nps.gov/cowp/learn/historyculture/the-battle-of-cowpens.htm</a>.</p>
         </div>
         <div class="source">
-            <p><strong> Glancy, Mark, “The War of Independence in Feature Films”</strong> <em>: ‘Special Relationship’ between Hollywood and Britain.</em> Accessed 3 Oct. 2024. <a href="https://www.tandfonline.com/doi/pdf/10.1080/01439680500262892" target="_blank">www.tandfonline.com/doi/pdf/10.1080/01439680500262892</a></p>
+            <p>Glancy, Mark. “The War of Independence in Feature Films: ‘Special Relationship’ Between Hollywood and Britain.” <em>Historical Journal of Film, Radio and Television</em>, vol. XX, no. X, 2005, pp. XX–XX. Accessed 3 October 2024, <a href="https://www.tandfonline.com/doi/pdf/10.1080/01439680500262892" target="_blank">https://www.tandfonline.com/doi/pdf/10.1080/01439680500262892</a>.</p>
         </div>
         <div class="source">
-            <p><strong>The Patriot Movie Research Paper.</strong> <em>123 HELPME</em> Accessed 9 Sept. 2024. <a href="https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV" target="_blank">https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV</a></p>
+            <p>“<b>The Patriot</b> Movie Research Paper.” <em>123HelpMe</em>, Accessed 9 September 2024, <a href="https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV" target="_blank">https://www.123helpme.com/essay/The-Patriot-Movie-Research-Paper-FJTZGPS6UEV</a>.</p>
         </div>
     </div>
+    
    
     <div class="card-container">
         <div class="card" id="card">
@@ -951,7 +1013,7 @@ hr {
     </div>
     <div class="watermark-container">
         <a href="https://www.linkedin.com/in/orion-beck-0239a2326/" target="_blank">
-            <img class="watermark-image" src="LinkedIn.svg" alt="LinkedIn Profile">
+            <img class="watermark-image" src="linkedin.svg" alt="LinkedIn Profile">
         </a>
     </div>
 
